@@ -1,0 +1,15 @@
+.bg-purp {
+    background-color: #962dff;
+}
+
+.navbar-default {
+    background-color: red !important;
+}
+
+body {
+    background-color: purple;
+}
+
+.h1 {
+    color: purple;
+}
