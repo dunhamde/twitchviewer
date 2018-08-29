@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { FETCH_FEATURED } from '../actions';
+import { FETCH_FEATURED } from '../actions/streams';
 
 export default function(state = {}, action) {
     switch(action.type) {

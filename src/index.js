@@ -5,6 +5,7 @@ import './index.css';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import promise from 'redux-promise';
+import thunk from 'redux-thunk';
 
 import NavHeader from './components/nav_header';
 import Popular from './components/popular';
@@ -13,7 +14,7 @@ import Settings from './components/settings';
 import MainStream from './components/main_stream';
 import reducers from './reducers';
 
-const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
+const createStoreWithMiddleware = applyMiddleware(promise,thunk)(createStore);
 
 ReactDOM.render(
     <Provider store={createStoreWithMiddleware(reducers)}>

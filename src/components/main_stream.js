@@ -4,6 +4,13 @@ import axios from 'axios';
 const EMBED_URL = "https://embed.twitch.tv/embed/v1.js";
 
 class MainStream extends Component {
+    static defaultProps = {
+        targetID: 'twitch-embed',
+        width: '940',
+        height: '480',
+        channel: 'loltyler1'
+    }
+
     componentDidMount() {
         let embed;
         const script = document.createElement('script');
@@ -22,13 +29,6 @@ class MainStream extends Component {
             </div>
         );
     }
-}
-
-MainStream.defaultProps = {
-    targetID: 'twitch-embed',
-    width: '940',
-    height: '480',
-    channel: 'loltyler1'
 }
 
 export default MainStream;

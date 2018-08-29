@@ -6,7 +6,7 @@ h1 {
     background-image: linear-gradient(to bottom,#a442f4 0,#a442f4 100%) !important; /* override background image gradient w/ flat color */
 /* }  */
 
-.navbar,
+/* .navbar,
 .navbar-default {
     background-color: #a442f4 !important;
     max-width: 75%;
@@ -16,4 +16,4 @@ h1 {
 .navbar-brand,
 .navbar-inverse {
     color: white !important;
-}
+} */
