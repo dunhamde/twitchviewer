@@ -3,21 +3,21 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./index.css";
 import { Provider } from "react-redux";
-import { createStore, applyMiddleware } from "redux";
-//import promise from 'redux-promise';
+import { createStore, applyMiddleware, compose, middle } from "redux";
 import thunk from "redux-thunk";
 
 import NavHeader from "./components/nav_header";
 import Popular from "./components/popular";
 import Games from "./components/games";
-import Settings from "./components/settings";
+import Recent from "./components/recent";
 import MainStream from "./components/main_stream";
 import reducers from "./reducers";
 
-const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)));
 
 ReactDOM.render(
-	<Provider store={createStoreWithMiddleware(reducers)}>
+	<Provider store={store}>
 		<BrowserRouter>
 			<div>
 				<NavHeader />
@@ -25,7 +25,7 @@ ReactDOM.render(
 					<Switch>
 						<Route path="/popular" component={Popular} />
 						<Route path="/games" component={Games} />
-						<Route path="/settings" component={Settings} />
+						<Route path="/recent" component={Recent} />
 					</Switch>
 				</div>
 				{/* <MainStream /> */}

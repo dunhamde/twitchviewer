@@ -1,3 +1,4 @@
+import _ from "lodash";
 import { createSelector } from "reselect";
 import {
 	FETCH_FEATURED,
@@ -16,7 +17,7 @@ export default function(state = {}, action) {
 			return {
 				...state,
 				loading: false,
-				streams: action.payload
+				streams: action.streams
 			};
 		case FETCH_FEATURED_FAILURE:
 			return {
@@ -29,30 +30,23 @@ export default function(state = {}, action) {
 	}
 }
 
-const loadingSelector = state => state.loading;
-const streamsSelector = state => state.streams;
-const errorSelector = state => state.error;
+export const getStreamState = createSelector(
+	state => state,
+	state => _.get(state, "streams")
+);
 
-export const getFortniteStreams = () => {
-	return createSelector(
-		[loadingSelector, streamsSelector],
-		(loading, streams) => {
-			// if (!loading && streams) {
-			// 	return streams.filter(stream =>
-			// 		stream.stream.game.text.includes("Fortnite")
-			// 	);
-			// }
-			return streams;
-		}
-	);
-};
+export const getStreams = createSelector(getStreamState, streamState =>
+	_.get(streamState, "streams")
+);
 
-export const getLoadingStatus = () => {
-	return createSelector([loadingSelector], loading => {
-		if (loading) {
-			return true;
-		} else {
-			return false;
-		}
-	});
-};
+export const getFeaturedStreams = createSelector(getStreams, streams =>
+	_.get(streams, "data.featured")
+);
+
+export const getIsLoading = createSelector(getStreamState, streamState =>
+	_.get(streamState, "loading")
+);
+
+export const getError = createSelector(getStreamState, streamState =>
+	_.get(streamState, "error")
+);

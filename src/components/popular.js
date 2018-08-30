@@ -1,24 +1,23 @@
 import React, { Component } from "react";
 import { fetchFeaturedStreams } from "../actions/streams";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import _ from "lodash";
-import {
-	getFortniteStreams,
-	getLoadingStatus
-} from "../reducers/reducer_streams";
+import { getFeaturedStreams, getIsLoading } from "../reducers/reducer_streams";
 
 class Popular extends Component {
 	componentDidMount() {
 		this.props.fetchFeaturedStreams();
 	}
 	renderStreams() {
-		const streams = this.props.streams.streams;
+		const streams = this.props.streams;
 		if (streams) {
-			return Object.keys(streams).map(stream => {
-				console.log(stream.title);
+			return streams.map(stream => {
 				return (
 					<li className="list-group-item" key={stream.title}>
-						<h3>{stream.title}</h3>
+						<h3>
+							<a href={stream.stream.channel.url}>{stream.title}</a>
+						</h3>
 						<img src={stream.image} />
 					</li>
 				);
@@ -32,7 +31,7 @@ class Popular extends Component {
 		}
 	}
 	render() {
-		if (this.props.loading) {
+		if (this.props.loading === true) {
 			return <div>Popular strims page!!</div>;
 		}
 
@@ -42,8 +41,8 @@ class Popular extends Component {
 
 function mapStateToProps(state) {
 	return {
-		streams: getFortniteStreams(state),
-		loading: getLoadingStatus(state)
+		streams: getFeaturedStreams(state),
+		loading: getIsLoading(state)
 	};
 }
 
