@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import { fetchFeaturedStreams } from "../actions/streams";
 import { connect } from "react-redux";
 import _ from "lodash";
+import {
+	getFortniteStreams,
+	getLoadingStatus
+} from "../reducers/reducer_streams";
 
 class Popular extends Component {
 	componentDidMount() {
@@ -11,6 +15,7 @@ class Popular extends Component {
 		const streams = this.props.streams.streams;
 		if (streams) {
 			return Object.keys(streams).map(stream => {
+				console.log(stream.title);
 				return (
 					<li className="list-group-item" key={stream.title}>
 						<h3>{stream.title}</h3>
@@ -27,16 +32,19 @@ class Popular extends Component {
 		}
 	}
 	render() {
-		if (!this.props.streams) {
+		if (this.props.loading) {
 			return <div>Popular strims page!!</div>;
 		}
+
 		return <ul className="list-group">{this.renderStreams()}</ul>;
 	}
 }
 
 function mapStateToProps(state) {
-	// TODO: this is questionable for now
-	return { streams: state };
+	return {
+		streams: getFortniteStreams(state),
+		loading: getLoadingStatus(state)
+	};
 }
 
 export default connect(
