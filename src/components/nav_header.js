@@ -23,7 +23,7 @@ class NavHeader extends Component {
 							<LinkContainer to="/games">
 								<NavItem>Games</NavItem>
 							</LinkContainer>
-							<LinkContainer to="/settings">
+							<LinkContainer to="/recent">
 								<NavItem>Settings</NavItem>
 							</LinkContainer>
 						</Nav>

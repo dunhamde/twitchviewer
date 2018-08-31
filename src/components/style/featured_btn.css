@@ -1,0 +1,25 @@
+div.tv_header a {
+  outline: none;
+  text-decoration: none;
+  display: inline-block;
+  padding: 5px;
+  margin-right: 0.625%;
+  text-align: center;
+  line-height: 1.5;
+  color: white;
+}
+
+div.tv_header a:link,
+div.tv_header a:visited,
+div.tv_header a:focus {
+  background: purple;
+}
+
+div.tv_header a:hover {
+  background: orange;
+}
+
+div.tv_header a:active {
+  background: red;
+  color: white;
+}

@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose, middle } from "redux";
 import thunk from "redux-thunk";
 
+import TVHeader from "./components/tv_header";
 import NavHeader from "./components/nav_header";
 import Popular from "./components/popular";
 import Games from "./components/games";
@@ -20,7 +21,8 @@ ReactDOM.render(
 	<Provider store={store}>
 		<BrowserRouter>
 			<div>
-				<NavHeader />
+				<TVHeader />
+				{/* <NavHeader /> */}
 				<div className="maincontent">
 					<Switch>
 						<Route path="/popular" component={Popular} />
