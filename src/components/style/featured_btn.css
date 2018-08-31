@@ -2,24 +2,23 @@ div.tv_header a {
   outline: none;
   text-decoration: none;
   display: inline-block;
-  padding: 5px;
-  margin-right: 0.625%;
+  padding: 5px 10px 5px 10px;
+  margin-right: 10%;
+  margin-left: 10%;
   text-align: center;
   line-height: 1.5;
-  color: white;
+  color: purple;
+  border-radius: 5px;
+  border: thin solid purple;
 }
 
 div.tv_header a:link,
 div.tv_header a:visited,
 div.tv_header a:focus {
-  background: purple;
+  background: white;
 }
 
 div.tv_header a:hover {
-  background: orange;
-}
-
-div.tv_header a:active {
-  background: red;
+  background: purple;
   color: white;
 }
