@@ -31,7 +31,6 @@ class TVHeader extends Component {
 		})
 	}
 
-
 	render() {
 		return (
 			<div className="header_container">
