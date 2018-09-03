@@ -27,8 +27,8 @@ class TVHeader extends Component {
 
 	toggleFeaturedStreams() {
 		this.setState({
-			showFeatured: !(this.state.showFeatured)
-		})
+			showFeatured: !this.state.showFeatured
+		});
 	}
 
 	render() {
@@ -40,7 +40,7 @@ class TVHeader extends Component {
 					<FeaturedButton />
 				</div>
 				{this.state.showFeatured && <FeaturedStreams />}
-				
+				{/* <FeaturedStreams /> */}
 			</div>
 		);
 	}
