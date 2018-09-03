@@ -1,48 +1,51 @@
 import React, { Component } from "react";
-import { Transition } from "react-transition-group";
-import anime from "animejs";
 import "./style/featured_streams.css";
+import { fetchFeaturedStreams } from "../actions/streams";
+import { connect } from "react-redux";
+import _ from "lodash";
+import { getFeaturedStreams, getIsLoading } from "../reducers/reducer_streams";
+import FeaturedStreamCard from "./featured_stream_card";
 
 class FeaturedStreams extends Component {
-	constructor() {
-		super();
+  componentDidMount() {
+    this.props.fetchFeaturedStreams();
+  }
+  renderStreams() {
+    const streams = this.props.streams;
+    if (streams) {
+      return streams.slice(1, 4).map(stream => {
+        return (
+          <li key={stream.title}>
+            <FeaturedStreamCard stream={stream} />
+          </li>
+        );
+      });
+    } else {
+      return (
+        <li className="list-group-item">
+          <h3>Not yet bruh</h3>
+        </li>
+      );
+    }
+  }
 
-		this.duration = 2000;
-		this.state = {
-			in: false
-		};
+  render() {
+    if (this.props.loading === true) {
+      return <div>Popular strims page!!</div>;
+    }
 
-		setTimeout(() => {
-			this.setState({
-				in: true
-			});
-		}, 2000);
-
-		setTimeout(() => {
-			this.setState({
-				in: false
-			});
-		}, 6000);
-	}
-
-	render() {
-		return (
-			<Transition
-				in={this.state.in}
-				timeout={this.duration}
-				mountOnEnter
-				unmountOnExit
-			>
-				{status => {
-					return (
-						<div className={"featured_streams trans-" + status}>
-							Featured Streams
-						</div>
-					);
-				}}
-			</Transition>
-		);
-	}
+    return <ul>{this.renderStreams()}</ul>;
+  }
 }
 
-export default FeaturedStreams;
+function mapStateToProps(state) {
+  return {
+    streams: getFeaturedStreams(state),
+    loading: getIsLoading(state)
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  { fetchFeaturedStreams }
+)(FeaturedStreams);
