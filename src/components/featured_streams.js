@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./style/featured_streams.css";
 import { fetchFeaturedStreams } from "../actions/streams";
 import { connect } from "react-redux";
-import _ from "lodash";
 import { getFeaturedStreams, getIsLoading } from "../reducers/reducer_streams";
 import FeaturedStreamCard from "./featured_stream_card";
 
@@ -10,16 +9,20 @@ class FeaturedStreams extends Component {
   componentDidMount() {
     this.props.fetchFeaturedStreams();
   }
+
   renderStreams() {
     const streams = this.props.streams;
     if (streams) {
-      return streams.slice(1, 4).map(stream => {
+      return streams.slice(1, 6).map(stream => {
         return (
           <li key={stream.title}>
-            <FeaturedStreamCard stream={stream} />
+            <FeaturedStreamCard
+              stream={stream}
+              updateActiveChannel={this.props.updateActiveChannel}
+            />
           </li>
         );
-      });
+      }, this);
     } else {
       return (
         <li className="list-group-item">
@@ -31,7 +34,7 @@ class FeaturedStreams extends Component {
 
   render() {
     if (this.props.loading === true) {
-      return <div>Popular strims page!!</div>;
+      return <div />;
     }
 
     return <ul>{this.renderStreams()}</ul>;

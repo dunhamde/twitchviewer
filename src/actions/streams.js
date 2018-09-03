@@ -5,32 +5,44 @@ const CLIENT_ID = "e7t3euzce0fa7oe93h3ovktw4gzvfx";
 export const FETCH_FEATURED = "FETCH_FEATURED";
 export const FETCH_FEATURED_SUCCESS = "FETCH_FEATURED_SUCCESS";
 export const FETCH_FEATURED_FAILURE = "FETCH_FEATURED_FAILURE";
+export const ACTIVE_CHANNEL_UPDATE = "ACTIVE_CHANNEL_UPDATE";
 
 export const fetchFeatured = () => ({
-	type: FETCH_FEATURED
+  type: FETCH_FEATURED
 });
 
 export const fetchFeaturedSuccess = data => ({
-	type: FETCH_FEATURED_SUCCESS,
-	streams: data
+  type: FETCH_FEATURED_SUCCESS,
+  streams: data
 });
 
 export const fetchFeaturedFailure = error => ({
-	type: FETCH_FEATURED_FAILURE,
-	reason: error
+  type: FETCH_FEATURED_FAILURE,
+  reason: error
+});
+
+export const updateActiveChannel = channel => ({
+  type: ACTIVE_CHANNEL_UPDATE,
+  channel: channel
 });
 
 export function fetchFeaturedStreams() {
-	const requestURL = `${FEATURED_URL}?client_id=${CLIENT_ID}`;
-	return function(dispatch) {
-		dispatch(fetchFeatured());
-		axios
-			.get(requestURL)
-			.then(response => {
-				dispatch(fetchFeaturedSuccess(response));
-			})
-			.catch(error => {
-				dispatch(fetchFeaturedFailure(error));
-			});
-	};
+  const requestURL = `${FEATURED_URL}?client_id=${CLIENT_ID}`;
+  return function(dispatch) {
+    dispatch(fetchFeatured());
+    axios
+      .get(requestURL)
+      .then(response => {
+        dispatch(fetchFeaturedSuccess(response));
+      })
+      .catch(error => {
+        dispatch(fetchFeaturedFailure(error));
+      });
+  };
+}
+
+export function activeChannelUpdate(channel) {
+  return function(dispatch) {
+    dispatch(updateActiveChannel(channel));
+  };
 }

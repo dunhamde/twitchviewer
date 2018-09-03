@@ -59,7 +59,9 @@ class TVHeader extends Component {
           classNames="featured"
         >
           <div className="featured_streams">
-            <FeaturedStreams />
+            <FeaturedStreams
+              updateActiveChannel={this.props.updateActiveChannel}
+            />
           </div>
         </CSSTransition>
       </div>

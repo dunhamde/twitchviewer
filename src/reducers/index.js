@@ -1,8 +1,8 @@
-import { combineReducers } from 'redux';
-import StreamsReducer from './reducer_streams';
+import { combineReducers } from "redux";
+import StreamsReducer from "./reducer_streams";
 
 const rootReducer = combineReducers({
-  streams: StreamsReducer,
+  streams: StreamsReducer
 });
 
 export default rootReducer;

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { fetchFeaturedStreams } from "../actions/streams";
 import { connect } from "react-redux";
-import _ from "lodash";
 import { getFeaturedStreams, getIsLoading } from "../reducers/reducer_streams";
 
 class Popular extends Component {

@@ -9,6 +9,8 @@
   -moz-transition: height 0.5s ease;
   -o-transition: height 0.5s ease;
   transition: height 0.5s ease;
+  display: flex;
+  align-items: center;
 }
 
 .featured-enter-done {
@@ -20,11 +22,5 @@
 }
 
 ul li {
-  display: inline-block;
-  overflow: hidden;
-}
-
-.featured_card {
-  width: 50;
-  height: 50;
+  display: inline-flex;
 }

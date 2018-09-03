@@ -1,0 +1,12 @@
+.featured_card {
+  max-width: 350;
+  max-height: 350;
+  border: 2px solid purple;
+  margin: 0 10px 0 10px;
+  text-align: center;
+  font-size: 20px;
+}
+
+.featured_card_title {
+  padding: 2px;
+}
