@@ -20,4 +20,13 @@
 .tv_header_brand {
   margin: 0 auto;
   color: purple;
+  width: 20%;
+  text-align: center;
+}
+
+.tv_header_item {
+  display: inline-flex;
+  width: 40%;
+  margin: 0 auto;
+  padding-left: 20px;
 }
