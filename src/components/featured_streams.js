@@ -6,49 +6,46 @@ import { getFeaturedStreams, getIsLoading } from "../reducers/reducer_streams";
 import FeaturedStreamCard from "./featured_stream_card";
 
 class FeaturedStreams extends Component {
-  componentDidMount() {
-    this.props.fetchFeaturedStreams();
-  }
+	componentDidMount() {
+		this.props.fetchFeaturedStreams();
+	}
 
-  renderStreams() {
-    const streams = this.props.streams;
-    if (streams) {
-      return streams.slice(1, 6).map(stream => {
-        return (
-          <li key={stream.title}>
-            <FeaturedStreamCard
-              stream={stream}
-              updateActiveChannel={this.props.updateActiveChannel}
-            />
-          </li>
-        );
-      }, this);
-    } else {
-      return (
-        <li className="list-group-item">
-          <h3>Not yet bruh</h3>
-        </li>
-      );
-    }
-  }
+	renderStreams() {
+		const streams = this.props.streams;
+		if (streams) {
+			return streams.slice(1, 4).map(stream => {
+				return (
+					<li key={stream.title}>
+						<FeaturedStreamCard stream={stream} />
+					</li>
+				);
+			}, this);
+		} else {
+			return (
+				<li className="list-group-item">
+					<h3>Not yet bruh</h3>
+				</li>
+			);
+		}
+	}
 
-  render() {
-    if (this.props.loading === true) {
-      return <div />;
-    }
+	render() {
+		if (this.props.loading === true) {
+			return <div />;
+		}
 
-    return <ul>{this.renderStreams()}</ul>;
-  }
+		return <ul>{this.renderStreams()}</ul>;
+	}
 }
 
 function mapStateToProps(state) {
-  return {
-    streams: getFeaturedStreams(state),
-    loading: getIsLoading(state)
-  };
+	return {
+		streams: getFeaturedStreams(state),
+		loading: getIsLoading(state)
+	};
 }
 
 export default connect(
-  mapStateToProps,
-  { fetchFeaturedStreams }
+	mapStateToProps,
+	{ fetchFeaturedStreams }
 )(FeaturedStreams);

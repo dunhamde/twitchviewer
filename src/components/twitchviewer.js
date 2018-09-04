@@ -5,19 +5,19 @@ import Popular from "./popular";
 import MainStream from "./main_stream";
 
 class TwitchViewer extends Component {
-  render() {
-    return (
-      <div>
-        <TVHeader />
-        <div className="maincontent">
-          <Switch>
-            <Route path="/popular" component={Popular} />
-          </Switch>
-          <MainStream />
-        </div>
-      </div>
-    );
-  }
+	render() {
+		return (
+			<div>
+				<TVHeader />
+				<div className="maincontent">
+					<Switch>
+						<Route path="/popular" component={Popular} />
+					</Switch>
+					<MainStream />
+				</div>
+			</div>
+		);
+	}
 }
 
 export default TwitchViewer;
