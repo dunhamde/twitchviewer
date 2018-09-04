@@ -6,9 +6,10 @@ import FeaturedStreams from "./featured_streams";
 import Search from "./search";
 import { CSSTransition } from "react-transition-group";
 import onClickOutside from "react-onclickoutside";
-import { showFeatured } from "../actions/streams";
-import { getShowFeatured } from "../reducers/reducer_streams";
+import { showFeatured, showRecent } from "../actions/streams";
+import { getShowFeatured, getShowRecent } from "../reducers/reducer_streams";
 import { connect } from "react-redux";
+import RecentStreams from "./recent_streams";
 
 class TVHeader extends Component {
   static defaultProps = {
@@ -18,11 +19,13 @@ class TVHeader extends Component {
   constructor(props) {
     super(props);
     this.toggleFeaturedStreams = this.toggleFeaturedStreams.bind(this);
+    this.toggleRecentStreams = this.toggleRecentStreams.bind(this);
     this.handleClickOutside = this.handleClickOutside.bind(this);
   }
 
   handleClickOutside() {
     this.props.showFeatured(false);
+    this.props.showRecent(false);
   }
 
   toggleFeaturedStreams() {
@@ -30,7 +33,11 @@ class TVHeader extends Component {
       ? this.props.showFeatured(false)
       : this.props.showFeatured(true);
   }
-  toggleRecentStreams() {}
+  toggleRecentStreams() {
+    this.props.showRecentStreams
+      ? this.props.showRecent(false)
+      : this.props.showRecent(true);
+  }
 
   render() {
     return (
@@ -64,6 +71,18 @@ class TVHeader extends Component {
             <FeaturedStreams />
           </div>
         </CSSTransition>
+        <CSSTransition
+          in={this.props.showRecentStreams}
+          timeout={{
+            enter: 0,
+            exit: 500
+          }}
+          mountOnEnter
+          unmountOnExit
+          classNames="recent"
+        >
+          <RecentStreams />
+        </CSSTransition>
       </div>
     );
   }
@@ -71,11 +90,12 @@ class TVHeader extends Component {
 
 function mapStateToProps(state) {
   return {
-    showFeaturedStreams: getShowFeatured(state)
+    showFeaturedStreams: getShowFeatured(state),
+    showRecentStreams: getShowRecent(state)
   };
 }
 
 export default connect(
   mapStateToProps,
-  { showFeatured }
+  { showFeatured, showRecent }
 )(onClickOutside(TVHeader));
