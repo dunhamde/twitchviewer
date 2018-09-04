@@ -4,36 +4,49 @@ import { connect } from "react-redux";
 import { getActiveChannel } from "../reducers/reducer_streams";
 import ReactTwitchEmbedVideo from "react-twitch-embed-video";
 
-const EMBED_URL = "https://embed.twitch.tv/embed/v1.js";
-
 class MainStream extends Component {
-	static defaultProps = {
-		targetID: "twitch-embed",
-		width: "100%",
-		height: "480",
-		channel: "ninja",
-		layout: "video"
-	};
+  constructor(props) {
+    super(props);
+    this.state = {
+      key: 0
+    };
+  }
+  static defaultProps = {
+    targetID: "twitch-embed",
+    width: "100%",
+    height: "480",
+    channel: "ninja",
+    layout: "video"
+  };
 
-	render() {
-		console.log("Current channel" + this.props.channel);
-		return (
-			<div className="mainstream">
-				<ReactTwitchEmbedVideo
-					layout="video"
-					channel={this.props.channel}
-					width="100%"
-					height="480"
-				/>
-			</div>
-		);
-	}
+  componentDidUpdate(previousProps) {
+    if (previousProps.channel !== this.props.channel) {
+      this.setState({
+        key: this.state.key + 1
+      });
+    }
+  }
+
+  render() {
+    console.log("Current channel" + this.props.channel);
+    return (
+      <div className="mainstream">
+        <ReactTwitchEmbedVideo
+          layout="video"
+          channel={this.props.channel}
+          width="100%"
+          height="480"
+          key={this.state.key}
+        />
+      </div>
+    );
+  }
 }
 
 function mapStateToProps(state) {
-	return {
-		channel: getActiveChannel(state)
-	};
+  return {
+    channel: getActiveChannel(state)
+  };
 }
 
 export default connect(mapStateToProps)(MainStream);
