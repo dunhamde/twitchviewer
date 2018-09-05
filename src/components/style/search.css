@@ -1,8 +1,8 @@
 .search_form {
   display: flex;
   flex-direction: column;
-  padding-left: 10%;
-  padding-right: 10%;
+  /* padding-left: 10%; */
+  /* padding-right: 10%; */
 }
 .search_results {
   margin-top: 2px;
