@@ -11,22 +11,48 @@
   color: black;
   background-color: white;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
 }
 
-.tv_header_brand {
-  margin: 0 auto;
+.tv_header > h3 {
   color: purple;
-  width: 20%;
-  text-align: center;
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
 }
 
-.tv_header_item {
-  display: inline-flex;
-  width: 40%;
+.tv_header_search {
+  flex: 1;
   margin: 0 auto;
-  padding-left: 20px;
+  padding: 20px;
+}
+
+.tv_header_buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+.tv_header_buttons * {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.tv_header a {
+  outline: none;
+  text-decoration: none;
+  padding: 5px 10px 5px 10px;
+  line-height: 1.5;
+  color: purple;
+  border: thin solid purple;
+}
+
+.tv_header a:link,
+.tv_header a:visited,
+.tv_header a:focus {
+  background: white;
+}
+
+.tv_header a:hover {
+  background: purple;
+  color: white;
 }

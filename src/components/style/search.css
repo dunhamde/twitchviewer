@@ -1,0 +1,10 @@
+.search_form {
+  display: flex;
+  flex-direction: column;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+.search_results {
+  background-color: black;
+  height: 500px;
+}
