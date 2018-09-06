@@ -1,6 +1,6 @@
 import React from "react";
 import "./style/featured_stream_card.css";
-import { activeChannelUpdate } from "../actions/header";
+import { updateActiveChannel } from "../actions/header";
 import { connect } from "react-redux";
 
 const FeaturedStreamCard = props => (
@@ -10,7 +10,7 @@ const FeaturedStreamCard = props => (
     </p>
     <img
       onClick={() => {
-        props.activeChannelUpdate(props.stream.stream.channel.name);
+        props.updateActiveChannel(props.stream.stream.channel.name);
       }}
       className="featured_card_img"
       src={props.stream.stream.preview.medium}
@@ -21,5 +21,5 @@ const FeaturedStreamCard = props => (
 
 export default connect(
   null,
-  { activeChannelUpdate }
+  { updateActiveChannel }
 )(FeaturedStreamCard);

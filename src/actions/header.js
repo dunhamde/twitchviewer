@@ -25,28 +25,18 @@ export const hideRecentStreams = () => ({
   type: HIDE_RECENT
 });
 
-export function activeChannelUpdate(channel) {
-  return function(dispatch) {
-    dispatch(updateActiveChannel(channel));
-  };
-}
-
 export function showFeatured(show) {
-  return function(dispatch) {
-    if (show) {
-      dispatch(showFeaturedStreams());
-    } else {
-      dispatch(hideFeaturedStreams());
-    }
-  };
+  if (show) {
+    return showFeaturedStreams();
+  } else {
+    return hideFeaturedStreams();
+  }
 }
 
 export function showRecent(show) {
-  return function(dispatch) {
-    if (show) {
-      dispatch(showRecentStreams());
-    } else {
-      dispatch(hideRecentStreams());
-    }
-  };
+  if (show) {
+    return showRecentStreams();
+  } else {
+    return hideRecentStreams();
+  }
 }

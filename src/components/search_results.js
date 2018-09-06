@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { activeChannelUpdate } from "../actions/header";
+import { updateActiveChannel } from "../actions/header";
 import {
   getSearchLoading,
   getSearchStreams
@@ -11,7 +11,7 @@ const _SearchResultCard = props => (
   <div className="search-card">
     <img
       onClick={() => {
-        props.activeChannelUpdate(props.stream.channel.name);
+        props.updateActiveChannel(props.stream.channel.name);
       }}
       className="search-card-img"
       src={props.stream.preview.small}
@@ -64,7 +64,7 @@ function mapStateToProps(state) {
 
 export const SearchResultCard = connect(
   null,
-  { activeChannelUpdate }
+  { updateActiveChannel }
 )(_SearchResultCard);
 
 export default connect(mapStateToProps)(SearchResults);
