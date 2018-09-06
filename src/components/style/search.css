@@ -1,7 +1,9 @@
 .search-container {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
 }
 
 .search-results-list {
@@ -9,6 +11,7 @@
   margin-top: 28px;
   /* background-color: black; */
   max-height: 0px;
+  -webkit-padding-start: 0px;
   -webkit-transition: max-height 0.5s ease;
   -moz-transition: max-height 0.5s ease;
   -o-transition: max-height 0.5s ease;
@@ -22,14 +25,25 @@
   /* background-color: black; */
 }
 .search-exiting {
-  height: 0px;
+  /* height: 0px; */
 }
 
 .search-card {
-  display: inline-flex;
   width: 314px;
-  height: 100px;
   display: inline-flex;
-  border: 5px thick green;
-  background-color: green;
+  background-color: black;
+  border: 1px solid purple;
+}
+.search-card-img {
+  height: 45px;
+  width: 80px;
+}
+.search-card-info {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+.search-card-info > a {
+  font-size: 1em;
 }

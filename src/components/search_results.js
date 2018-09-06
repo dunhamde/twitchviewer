@@ -1,23 +1,27 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { activeChannelUpdate } from "../actions/header";
 import {
   getSearchLoading,
   getSearchStreams
 } from "../reducers/reducer_streams";
 import "./style/search.css";
 
-const SearchResultCard = props => (
+const _SearchResultCard = props => (
   <div className="search-card">
     <img
       onClick={() => {
         props.activeChannelUpdate(props.stream.channel.name);
       }}
-      className="search_card_img"
+      className="search-card-img"
       src={props.stream.preview.small}
       alt={props.stream.title}
     />
-    <p className="search-card-title">
-      <a href={props.stream.channel.url}>{props.stream.channel.name}</a>
+    <p className="search-card-info">
+      <a href={props.stream.channel.url}>{props.stream.channel.status}</a>
+      {props.stream.game}
+      <br />
+      {props.stream.channel.display_name}
     </p>
   </div>
 );
@@ -57,5 +61,10 @@ function mapStateToProps(state) {
     loading: getSearchLoading(state)
   };
 }
+
+export const SearchResultCard = connect(
+  null,
+  { activeChannelUpdate }
+)(_SearchResultCard);
 
 export default connect(mapStateToProps)(SearchResults);

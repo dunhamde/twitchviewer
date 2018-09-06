@@ -4,6 +4,7 @@ import { search } from "../actions/search";
 import { connect } from "react-redux";
 import SearchResults from "./search_results";
 import { CSSTransition } from "react-transition-group";
+import onClickOutside from "react-onclickoutside";
 import {
   getSearchStreams,
   getSearchLoading
@@ -15,7 +16,8 @@ class Search extends Component {
     this.onInputChange = this.onInputChange.bind(this);
     this.timeout = 0;
     this.state = {
-      term: ""
+      term: "",
+      showResults: false
     };
   }
 
@@ -24,7 +26,8 @@ class Search extends Component {
       clearTimeout(this.timeout);
     }
     this.setState({
-      term: event.target.value
+      term: event.target.value,
+      showResults: true
     });
     if (this.state.term !== "") {
       this.timeout = setTimeout(() => {
@@ -37,6 +40,18 @@ class Search extends Component {
     e.preventDefault();
   }
 
+  handleClickOutside = () => {
+    this.setState({
+      showResults: false
+    });
+  };
+
+  handleSearchClick = () => {
+    this.setState({
+      showResults: true
+    });
+  };
+
   render() {
     console.log(this.props.streams);
     return (
@@ -47,12 +62,17 @@ class Search extends Component {
             className="search-input"
             size="40"
             value={this.state.term}
+            onClick={this.handleSearchClick}
             onChange={this.onInputChange}
           />
         </form>
 
         <CSSTransition
-          in={this.props.loading === false}
+          in={
+            this.props.loading === false &&
+            this.state.term &&
+            this.state.showResults
+          }
           timeout={{
             enter: 0,
             exit: 500
@@ -78,4 +98,4 @@ function mapStateToProps(state) {
 export default connect(
   mapStateToProps,
   { search }
-)(Search);
+)(onClickOutside(Search));
