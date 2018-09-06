@@ -3,6 +3,11 @@ import "./style/search.css";
 import { search } from "../actions/search";
 import { connect } from "react-redux";
 import SearchResults from "./search_results";
+import { CSSTransition } from "react-transition-group";
+import {
+  getSearchStreams,
+  getSearchLoading
+} from "../reducers/reducer_streams";
 
 class Search extends Component {
   constructor(props) {
@@ -28,25 +33,49 @@ class Search extends Component {
     }
   }
 
+  handleSubmit(e) {
+    e.preventDefault();
+  }
+
   render() {
+    console.log(this.props.streams);
     return (
-      <div className="search_form">
-        <form onSubmit={this.handleSubmit} className="input-group">
+      <div className="search-container">
+        <form onSubmit={this.handleSubmit} className="search-form">
           <input
             placeholder="Search for streams"
-            className="form-control"
+            className="search-input"
             size="40"
             value={this.state.term}
             onChange={this.onInputChange}
           />
         </form>
-        <SearchResults />
+
+        <CSSTransition
+          in={this.props.loading === false}
+          timeout={{
+            enter: 0,
+            exit: 500
+          }}
+          mountOnEnter
+          unmountOnExit
+          classNames="search"
+        >
+          <SearchResults />
+        </CSSTransition>
       </div>
     );
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    loading: getSearchLoading(state),
+    streams: getSearchStreams(state)
+  };
+}
+
 export default connect(
-  null,
+  mapStateToProps,
   { search }
 )(Search);

@@ -1,5 +1,5 @@
 import axios from "axios";
-export const SEARCH_STREAMS = "SEARCH_FEATURED";
+export const SEARCH_STREAMS = "SEARCH_STREAMS";
 export const SEARCH_STREAMS_SUCCESS = "SEARCH_STREAMS_SUCCESS";
 export const SEARCH_STREAMS_FAILURE = "SEARCH_STREAMS_FAILURE";
 const SEARCH_URL = "https://api.twitch.tv/kraken/search/streams?query=";

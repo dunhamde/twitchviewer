@@ -23,8 +23,6 @@
 .tv_header_search {
   flex: 1;
   display: flex;
-  /* margin: 0 auto; */
-  /* padding: 20px; */
   align-items: center;
   justify-content: center;
 }
@@ -40,7 +38,7 @@
   margin-right: 5px;
 }
 
-.tv_header a {
+.tv_header > a {
   outline: none;
   text-decoration: none;
   padding: 5px 10px 5px 10px;
@@ -49,13 +47,13 @@
   border: thin solid purple;
 }
 
-.tv_header a:link,
-.tv_header a:visited,
-.tv_header a:focus {
+.tv_header > a:link,
+.tv_header > a:visited,
+.tv_header > a:focus {
   background: white;
 }
 
-.tv_header a:hover {
+.tv_header > a:hover {
   background: purple;
   color: white;
 }

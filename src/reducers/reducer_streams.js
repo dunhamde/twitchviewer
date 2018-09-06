@@ -118,9 +118,9 @@ export const getShowRecent = createSelector(getStreamState, streamState =>
 );
 
 export const getSearchStreams = createSelector(getStreamState, streamState =>
-  _.get(streamState, "")
+  _.get(streamState, "searchResults.data.streams")
 );
 
 export const getSearchLoading = createSelector(getStreamState, streamState =>
-  _.get(streamState, "")
+  _.get(streamState, "loadingSearch")
 );
