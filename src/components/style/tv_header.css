@@ -38,7 +38,7 @@
   margin-right: 5px;
 }
 
-.tv_header > a {
+#header-btn {
   outline: none;
   text-decoration: none;
   padding: 5px 10px 5px 10px;
@@ -47,13 +47,13 @@
   border: thin solid purple;
 }
 
-.tv_header > a:link,
-.tv_header > a:visited,
-.tv_header > a:focus {
+#header-btn:link,
+#header-btn:visited,
+#header-btn:focus {
   background: white;
 }
 
-.tv_header > a:hover {
+#header-btn:hover {
   background: purple;
   color: white;
 }

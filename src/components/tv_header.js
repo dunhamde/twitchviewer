@@ -12,7 +12,7 @@ import RecentStreams from "./recent_streams";
 
 function TVHeaderButton(props) {
   return (
-    <a onClick={props.onClick} id="header_btn" href="#btn">
+    <a onClick={props.onClick} id="header-btn" href="#btn">
       {props.text}
     </a>
   );
