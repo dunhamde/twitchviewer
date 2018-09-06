@@ -53,7 +53,6 @@ class Search extends Component {
   };
 
   render() {
-    console.log(this.props.streams);
     return (
       <div className="search-container">
         <form onSubmit={this.handleSubmit} className="search-form">
