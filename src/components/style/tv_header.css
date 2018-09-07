@@ -37,23 +37,3 @@
   margin-left: 5px;
   margin-right: 5px;
 }
-
-#header-btn {
-  outline: none;
-  text-decoration: none;
-  padding: 5px 10px 5px 10px;
-  line-height: 1.5;
-  color: purple;
-  border: thin solid purple;
-}
-
-#header-btn:link,
-#header-btn:visited,
-#header-btn:focus {
-  background: white;
-}
-
-#header-btn:hover {
-  background: purple;
-  color: white;
-}
