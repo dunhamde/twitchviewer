@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./style/tv_header.css";
 import "./style/featured_streams.css";
 import FeaturedStreams from "./featured_streams";
 import Search from "./search_bar";
@@ -18,6 +17,8 @@ const TVHeaderButton = styled.a`
 	line-height: 1.5;
 	color: purple;
 	border: thin solid purple;
+	margin-left: 5px;
+	margin-right: 5px;
 	&: link,&: visted,&: focus {
 		background: white;
 		text-decoration: none;
@@ -29,13 +30,32 @@ const TVHeaderButton = styled.a`
 	}
 `;
 
-// function TVHeaderButton(props) {
-// 	return (
-// 		<a onClick={props.onClick} id="header-btn" href="#btn">
-// 			{props.text}
-// 		</a>
-// 	);
-// }
+const TVHeaderBrand = styled.h3`
+	color: purple;
+	flex: 1;
+	display: flex;
+	justify-content: space-around;
+`;
+
+const HeaderContainer = styled.div`
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+`;
+
+const StyledHeader = styled.div`
+	height: 76px;
+	color: black;
+	background-color: white;
+	display: flex;
+
+	position: fixed;
+	z-index: 99;
+	top: 0;
+	right: 0;
+	left: 0;
+`;
 
 class TVHeader extends Component {
 	static defaultProps = {
@@ -63,21 +83,21 @@ class TVHeader extends Component {
 
 	render() {
 		return (
-			<div className="header_container">
-				<div className="tv_header">
-					<div className="tv_header_search">
+			<div>
+				<StyledHeader>
+					<HeaderContainer>
 						<Search />
-					</div>
-					<h3>TwitchViewer</h3>
-					<div className="tv_header_buttons">
+					</HeaderContainer>
+					<TVHeaderBrand>TwitchViewer</TVHeaderBrand>
+					<HeaderContainer>
 						<TVHeaderButton onClick={() => this.toggleRecentStreams()}>
 							Recent
 						</TVHeaderButton>
 						<TVHeaderButton onClick={() => this.toggleFeaturedStreams()}>
 							Featured
 						</TVHeaderButton>
-					</div>
-				</div>
+					</HeaderContainer>
+				</StyledHeader>
 
 				<CSSTransition
 					in={this.props.showFeaturedStreams}

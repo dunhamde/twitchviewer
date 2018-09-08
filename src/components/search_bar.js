@@ -14,7 +14,6 @@ import {
 class Search extends Component {
 	constructor(props) {
 		super(props);
-		//this.timeout = 0;
 		this.state = {
 			term: "",
 			showResults: false
