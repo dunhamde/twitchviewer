@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import _ from "lodash";
-import "./style/search.css";
 import { search } from "../actions/search";
 import { connect } from "react-redux";
 import SearchResults from "./search_results";
@@ -10,6 +9,15 @@ import {
 	getSearchStreams,
 	getSearchLoading
 } from "../reducers/reducer_streams";
+import styled from "styled-components";
+
+const SearchContainer = styled.div`
+	display: inline-flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: baseline;
+`;
 
 class Search extends Component {
 	constructor(props) {
@@ -49,7 +57,7 @@ class Search extends Component {
 
 	render() {
 		return (
-			<div className="search-container">
+			<SearchContainer>
 				<form onSubmit={this.handleSubmit} className="search-form">
 					<input
 						placeholder="Search for streams"
@@ -77,7 +85,7 @@ class Search extends Component {
 				>
 					<SearchResults />
 				</CSSTransition>
-			</div>
+			</SearchContainer>
 		);
 	}
 }

@@ -1,17 +1,39 @@
 import React, { Component } from "react";
-import "./style/recent_streams.css";
+import styled from "styled-components";
+
+const RecentStreamsList = styled.ul`
+	float: right;
+	width: 25%;
+	background-color: black;
+	height: 0px;
+	overflow: hidden;
+	-webkit-transition: height 0.5s ease;
+	-moz-transition: height 0.5s ease;
+	-o-transition: height 0.5s ease;
+	transition: height 0.5s ease;
+	display: flex;
+	align-items: center;
+
+	&.recent-enter-done {
+		height: 300px;
+		background-color: black;
+	}
+	&.recent-exiting {
+		height: 0px;
+	}
+`;
 
 class RecentStreams extends Component {
-  render() {
-    return (
-      <ul className="recent_streams_list">
-        <li className="recent_stream">ninja</li>
-        <li className="recent_stream">loltyler1</li>
-        <li className="recent_stream">reckful</li>
-        <li className="recent_stream">mitchjones</li>
-      </ul>
-    );
-  }
+	render() {
+		return (
+			<RecentStreamsList>
+				<li>ninja</li>
+				<li>loltyler1</li>
+				<li>reckful</li>
+				<li>mitchjones</li>
+			</RecentStreamsList>
+		);
+	}
 }
 
 export default RecentStreams;

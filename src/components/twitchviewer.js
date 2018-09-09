@@ -9,12 +9,10 @@ class TwitchViewer extends Component {
 		return (
 			<div>
 				<TVHeader />
-				{/* <div className="maincontent"> */}
 				<Switch>
 					<Route path="/popular" component={Popular} />
 				</Switch>
 				<MainStream />
-				{/* </div> */}
 			</div>
 		);
 	}

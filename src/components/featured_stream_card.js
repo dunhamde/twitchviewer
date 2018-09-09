@@ -1,14 +1,26 @@
 import React from "react";
-import "./style/featured_stream_card.css";
 import { updateActiveChannel } from "../actions/header";
 import { connect } from "react-redux";
 import styled from "styled-components";
 
+const FeaturedStreamCardContainer = styled.div`
+	max-width: 350;
+	max-height: 350;
+	border: 2px solid purple;
+	margin: 0 10px 0 10px;
+	text-align: center;
+	font-size: 20px;
+`;
+
+const FeaturedStreamCardTitle = styled.p`
+	padding: 2px;
+`;
+
 const FeaturedStreamCard = props => (
-	<div className="featured_card">
-		<p className="featured_card_title">
+	<FeaturedStreamCardContainer>
+		<FeaturedStreamCardTitle>
 			<a href={props.stream.stream.channel.url}>{props.stream.title}</a>
-		</p>
+		</FeaturedStreamCardTitle>
 		<img
 			onClick={() => {
 				props.updateActiveChannel(props.stream.stream.channel.name);
@@ -17,7 +29,7 @@ const FeaturedStreamCard = props => (
 			src={props.stream.stream.preview.medium}
 			alt={props.stream.title}
 		/>
-	</div>
+	</FeaturedStreamCardContainer>
 );
 
 export default connect(
