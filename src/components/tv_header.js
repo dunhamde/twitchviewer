@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./style/featured_streams.css";
 import FeaturedStreams from "./featured_streams";
 import Search from "./search_bar";
 import { CSSTransition } from "react-transition-group";
@@ -57,6 +56,28 @@ const StyledHeader = styled.div`
 	left: 0;
 `;
 
+const FeaturedStreamsContainer = styled.div`
+	width: 100%;
+	background-color: black;
+	color: white;
+	height: 0px;
+	overflow: hidden;
+	-webkit-transition: height 0.5s ease;
+	-moz-transition: height 0.5s ease;
+	-o-transition: height 0.5s ease;
+	transition: height 0.5s ease;
+	display: flex;
+	align-items: center;
+
+	&.featured-enter-done {
+		height: 350px;
+		background-color: black;
+	}
+	&.featured-exiting {
+		height: 0px;
+	}
+`;
+
 class TVHeader extends Component {
 	static defaultProps = {
 		showFeaturedStreams: false,
@@ -109,9 +130,9 @@ class TVHeader extends Component {
 					unmountOnExit
 					classNames="featured"
 				>
-					<div className="featured_streams">
+					<FeaturedStreamsContainer>
 						<FeaturedStreams />
-					</div>
+					</FeaturedStreamsContainer>
 				</CSSTransition>
 				<CSSTransition
 					in={this.props.showRecentStreams}
