@@ -34,6 +34,12 @@ const TVHeaderBrand = styled.h3`
   flex: 1;
   display: flex;
   justify-content: space-around;
+
+  @media (max-width: 650px) {
+    font-size: 1.5em;
+    margin-top: 0;
+    margin-bottom: 5px;
+  }
 `;
 
 const HeaderColumn = styled.div`
@@ -43,7 +49,8 @@ const HeaderColumn = styled.div`
   justify-content: center;
 
   @media (max-width: 650px) {
-    flex-direction: column;
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
 `;
 
@@ -54,7 +61,14 @@ const StyledHeader = styled.div`
   display: flex;
 
   @media (max-width: 650px) {
+    h3 {
+      order: 1;
+    }
+    div {
+      order: 2;
+    }
     flex-direction: column;
+    height: auto;
   }
 `;
 
@@ -76,8 +90,6 @@ const FeaturedStreamsContainer = styled.div`
   -moz-transition: height 0.5s ease;
   -o-transition: height 0.5s ease;
   transition: height 0.5s ease;
-  display: flex;
-  align-items: center;
 
   &.featured-enter-done {
     height: 350px;
