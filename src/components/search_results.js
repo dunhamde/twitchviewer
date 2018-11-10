@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { updateActiveChannel } from "../actions/header";
-import {
-  getSearchLoading,
-  getSearchStreams
-} from "../reducers/reducer_streams";
+import { getSearchLoading, getSearchStreams } from "../selectors/selectors.js";
 import styled from "styled-components";
 
 const SearchCard = styled.div`

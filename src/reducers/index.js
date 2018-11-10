@@ -1,8 +1,12 @@
 import { combineReducers } from "redux";
-import StreamsReducer from "./reducer_streams";
+import HeaderReducer from "./reducer_header";
+import FetchReducer from "./reducer_fetch";
+import SearchReducer from "./reducer_search";
 
 const rootReducer = combineReducers({
-  streams: StreamsReducer
+  header: HeaderReducer,
+  fetch: FetchReducer,
+  search: SearchReducer
 });
 
 export default rootReducer;

@@ -7,30 +7,30 @@ export const FETCH_FEATURED_SUCCESS = "FETCH_FEATURED_SUCCESS";
 export const FETCH_FEATURED_FAILURE = "FETCH_FEATURED_FAILURE";
 
 export const fetchFeatured = () => ({
-	type: FETCH_FEATURED
+  type: FETCH_FEATURED
 });
 
 export const fetchFeaturedSuccess = data => ({
-	type: FETCH_FEATURED_SUCCESS,
-	streams: data
+  type: FETCH_FEATURED_SUCCESS,
+  streams: data
 });
 
 export const fetchFeaturedFailure = error => ({
-	type: FETCH_FEATURED_FAILURE,
-	reason: error
+  type: FETCH_FEATURED_FAILURE,
+  reason: error
 });
 
 export function fetchFeaturedStreams() {
-	const requestURL = `${FEATURED_URL}?client_id=${CLIENT_ID}`;
-	return function(dispatch) {
-		dispatch(fetchFeatured());
-		axios
-			.get(requestURL)
-			.then(response => {
-				dispatch(fetchFeaturedSuccess(response));
-			})
-			.catch(error => {
-				dispatch(fetchFeaturedFailure(error));
-			});
-	};
+  const requestURL = `${FEATURED_URL}?client_id=${CLIENT_ID}`;
+  return function(dispatch) {
+    dispatch(fetchFeatured());
+    axios
+      .get(requestURL)
+      .then(response => {
+        dispatch(fetchFeaturedSuccess(response));
+      })
+      .catch(error => {
+        dispatch(fetchFeaturedFailure(error));
+      });
+  };
 }

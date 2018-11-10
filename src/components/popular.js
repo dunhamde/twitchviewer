@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { fetchFeaturedStreams } from "../actions/fetch";
 import { connect } from "react-redux";
-import { getFeaturedStreams, getIsLoading } from "../reducers/reducer_streams";
+import { getFeaturedStreams, getIsLoading } from "../selectors/selectors.js";
 
 class Popular extends Component {
   componentDidMount() {

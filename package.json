@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@storybook/addon-actions": "^4.0.4",
     "axios": "^0.18.0",
     "babel-preset-react": "^6.24.1",
     "eslint-plugin-prettier": "^2.7.0",
@@ -19,6 +20,7 @@
     "redux-promise": "^0.6.0",
     "redux-thunk": "^2.3.0",
     "reselect": "^3.0.1",
+    "reselect-tools": "0.0.7",
     "styled-components": "^3.4.10"
   },
   "scripts": {
@@ -26,9 +28,15 @@
     "build": "react-scripts build",
     "deploy": "aws s3 sync build/ s3://twitchviewer",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 9001 -c .storybook"
   },
   "devDependencies": {
+    "@babel/core": "^7.1.5",
+    "@babel/preset-env": "^7.1.5",
+    "@storybook/react": "^4.0.4",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.4",
     "eslint": "^5.9.0"
   }
 }

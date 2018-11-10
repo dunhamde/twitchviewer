@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { fetchFeaturedStreams } from "../actions/fetch";
 import { connect } from "react-redux";
-import { getFeaturedStreams, getIsLoading } from "../reducers/reducer_streams";
+import { getFeaturedStreams, getIsLoading } from "../selectors/selectors.js";
 import FeaturedStreamCard from "./featured_stream_card";
 import styled from "styled-components";
 
@@ -48,7 +48,6 @@ class FeaturedStreams extends Component {
     if (this.props.loading === true) {
       return <div />;
     }
-
     return <FeaturedStreamsList>{this.renderStreams()}</FeaturedStreamsList>;
   }
 }

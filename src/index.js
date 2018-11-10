@@ -8,6 +8,10 @@ import thunk from "redux-thunk";
 import reducers from "./reducers";
 import TwitchViewer from "./components/twitchviewer";
 
+import { registerSelectors } from "reselect-tools";
+import * as selectors from "./selectors/selectors.js";
+registerSelectors({ selectors });
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)));
 
