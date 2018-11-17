@@ -37,9 +37,7 @@ class FeaturedStreams extends Component {
             }, this)
         } else {
             return (
-                <li className="list-group-item">
-                    <h3>Not yet bruh</h3>
-                </li>
+                <img src={require('./ajax-loader.gif')} alt="loading spinner" />
             )
         }
     }

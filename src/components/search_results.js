@@ -76,7 +76,10 @@ class SearchResults extends Component {
         } else {
             return (
                 <li className="list-group-item">
-                    <h3>Not yet bruh</h3>
+                    <img
+                        src={require('./ajax-loader.gif')}
+                        alt="loading spinner"
+                    />
                 </li>
             )
         }
@@ -84,7 +87,9 @@ class SearchResults extends Component {
 
     render() {
         if (this.props.loading === true) {
-            return <div />
+            return (
+                <img src={require('./ajax-loader.gif')} alt="loading spinner" />
+            )
         }
         return <SearchResultsList>{this.renderStreams()}</SearchResultsList>
     }
