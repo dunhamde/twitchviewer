@@ -1,11 +1,8 @@
-import _ from "lodash";
-import { createSelector } from "reselect";
 import {
   SEARCH_STREAMS,
   SEARCH_STREAMS_SUCCESS,
   SEARCH_STREAMS_FAILURE
 } from "../actions/search";
-import { getStreamState } from "./reducer_fetch";
 
 export default function(state = {}, action) {
   switch (action.type) {
